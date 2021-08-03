@@ -1,0 +1,184 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 1.25rem;
+    font-family: 'Rajdhani', sans-serif;
+    /* max-width: 1200px;
+    width: 80%; */
+}
+/* 
+    Typography
+*/
+
+
+
+/*---------------------------------------- 
+General information section
+------------------------------------------*/
+#budget-general-info{
+    background-image: url('images/header-background.jpg');
+    background-color: rgba(0, 128, 0, 0.733);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: bottom;
+    color: whitesmoke;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+#budget-title{
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 1em 0 .5em 0;
+}
+#budget-current{
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: .2em;
+}
+.budget-total{
+    max-width: 400px;
+    width: 100%;
+    padding: .5em;
+    margin: 0 auto .5em auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr) 30px;
+    column-gap: 5px;
+    text-align: left;
+}
+#budget-total-income-title,
+#budget-total-expense-title{
+    grid-column: 1/4;
+}
+
+#budget-total-income-number,
+#budget-total-expense-number{
+    grid-column: 4;
+    text-align: right;
+}
+
+
+#budget-total-expense-percent{
+    grid-column: 5;
+    text-align: center;
+    background-color: rgba(245, 245, 245, 0.219);
+    padding: 0 .2em;
+}
+
+.income{
+    background-color: rgba(14, 46, 14, 0.685);
+}
+
+.expense{
+    background-color: rgba(255, 68, 0, 0.719);
+}
+/* ----------------------------------------------
+Budget update Section (data input
+------------------------------------------------*/
+#budget-update{
+    background-color: rgba(0, 128, 0, 0.2);
+    padding: .5em 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+select,
+input,
+button{
+    font-size: 1.125rem;
+    font-family: 'Rajdhani', sans-serif;
+    padding: .2em .2em;
+    margin: .2em .2em ;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+}
+#budget-name{
+    max-width: 400px;
+    width: 100%;
+}
+#budget-number{
+    max-width: 6rem;
+}
+
+#budget-total-expense-percent{
+    font-size: .75rem;
+}
+#btn-input-data{
+    background-color: rgba(0, 100, 0, 0.541);
+    font-size: 1rem;
+    cursor: pointer;
+    color: whitesmoke;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: .2em .6em;
+}
+/* --------------------------------
+budget-detail
+----------------------------------*/
+#budget-detail{
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (min-width: 700px){
+    #budget-detail{
+        max-width: 1000px;
+        /* height: 100vh; */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+}
+
+#budget-detail h3{
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 1em;
+}
+
+.budget-detail-list{    
+    display: grid;
+    grid-template-columns: repeat(3,1fr) 30px;
+    padding: .5em;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.budge-detail-name{
+    grid-column: 1/span 2;
+    text-align: left;
+}
+.budge-detail-number,
+.icon-type{
+    text-align: right;
+}
+
+
+.bk-grey{
+    background-color: rgba(0, 128, 0, 0.2); ;
+}
+
+.icon-type{
+    font-weight: 400;
+    color: #aaa;
+}
+
+.icon-type:hover,
+.icon-type:focus{
+    color: darkgreen;
+    cursor: pointer;
+}
+
+/*-----------------------------------
+Footer 
+-------------------------------------*/
+.budget-footer{
+    text-align: center;
+    background-color: rgba(0, 128, 0, 0.2) ;
+    padding: 1em 1em;
+    margin-top: 2em;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Monthly Budget</title>
+        <meta charset="Unicode-utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet">
+        <!-- Link to font awesome (icons) hosted in https://cdnjs.com/libraries/font-awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id = "budget-general-info">
+            <h2 id='budget-title'></h2>
+            <h1 id='budget-current'>+0.00</h1>
+            <div class="budget-total income">
+                <p id='budget-total-income-title'>Income</p>
+                <p id='budget-total-income-number'>+ 0.00</p>
+            </div>
+            <div class="budget-total expense">
+                <p id='budget-total-expense-title'>Expense</p>
+                <p id='budget-total-expense-number'>- 0.00</p>
+                <p id='budget-total-expense-percent'>__</p>
+            </div>          
+        </div>
+        <div id="budget-update">
+            <select id="budget-type" name="budget-type">
+                <option value="income">+ Income</option>
+                <option value="expense">- Expense</option>
+            </select>
+            <input id="budget-name" type="text" name="budget-name" placeholder="Description of income or expnese">
+            <input id="budget-number" type="text" name="budget-number" placeholder="Value">
+            <button id="btn-input-data" name=submit>Insert data</button>
+        </div>
+        <div id="budget-detail">
+            <div>
+                <h3>Income</h3>
+                <div id="income-detail">
+                    <!--Javascript come in here bk-grey --> 
+                </div>    
+            </div>
+            <div>
+                <h3>Expense</h3>
+                <div id="expense-detail">
+                    <!--Javascript come in here--> 
+                </div>          
+            </div>
+        </div>
+        <footer class="budget-footer">
+            <p>Monthly Budget App </p>
+            <p>Copyright @ Hang Nguyen - 2021</p>
+        </footer>
+        <script src="index.js"></script>
+    </body>
+</html>
