@@ -17,12 +17,13 @@ const budgetNumber = document.getElementById('budget-number')
 const btnInputData = document.getElementById('btn-input-data')
 const budgeDetailName = document.getElementById('budge-detail-name')
 const budgeDetailNumber = document.getElementById('budge-detail-number')
+const iconType = document.querySelector('.icon-type')
 
 const incomeDetail = document.getElementById('income-detail')
 const expenseDetail = document.getElementById('expense-detail')
 
-let incomeList = new Map()
-let expenseList = new Map()
+let incomeList = []
+let expenseList = []
 
 
 let totalIncome = 0
@@ -31,11 +32,11 @@ let currentBalance = 0
 let sign = ''
 const currencySign = '&#8364;'
 
-function renderList(a){
+function renderList(arr){
     let i = 1
     let lineStyle = ''
     let listItems = ''
-    for (let [key, value] of a.entries()) {
+    for (let item of arr) {
         if (i % 2 == 0){
             lineStyle = 'bk-grey'
             i++
@@ -47,40 +48,64 @@ function renderList(a){
             
         listItems += `
             <div class="budget-detail-list ${lineStyle}">
-                <p class="budge-detail-name">${key}</p>
-                <p class="budge-detail-number">${value}</p>
-                <p class="icon-type"> <i class="far fa-trash-alt" id='${key}'></i></p>  
+                <p class="budge-detail-name">${item.key}</p>
+                <p class="budge-detail-number">${item.value}</p>
+                <img class="delete-button" data-key=${item.key} data-value=${item.value} src='images/delete-icon.png'>   
             </div> 
         `
       }
     return listItems
 }
 
-btnInputData.addEventListener('click', function(){
-    if (budgetType.value === 'income'){
-        incomeList.set(budgetName.value, Number(budgetNumber.value))
-        totalIncome += Number(budgetNumber.value)
-        budgetTotalIncome.innerHTML = ` + ${totalIncome} ${currencySign} `
-        incomeDetail.innerHTML = renderList(incomeList)
-    } 
-    else if(budgetType.value === 'expense'){
-        expenseList.set(budgetName.value, Number(budgetNumber.value))
-        totalExpense += Number(budgetNumber.value)
-        budgetTotalExpense.innerHTML = `- ${totalExpense} ${currencySign} `
-        expenseDetail.innerHTML = renderList(expenseList)
-    }
+function displayStatic(){
     currentBalance = totalIncome - totalExpense
     if (currentBalance >= 0)
         sign = ' + '
     else
         sign = ' '
     budgetCurrent.innerHTML = sign + currentBalance + currencySign
+    budgetTotalIncome.innerHTML = ` + ${totalIncome} ${currencySign} `
+    budgetTotalExpense.innerHTML = `- ${totalExpense} ${currencySign} `
     budgetExpensePercent.textContent = Math.floor((totalExpense/totalIncome)*100) + '%'
     budgetName.value = ''
     budgetNumber.value = 0
-    // console.log(incomeList)
-    // console.log(expenseList)
+    incomeDetail.innerHTML = renderList(incomeList)
+    expenseDetail.innerHTML = renderList(expenseList)
+}
+
+btnInputData.addEventListener('click', function(){
+    const newBudget = {
+        key: budgetName.value,
+        value: Number(budgetNumber.value) 
+    }
+
+    if (budgetType.value === 'income'){
+        incomeList.push(newBudget)
+        totalIncome += Number(budgetNumber.value)        
+        
+    } 
+    else if(budgetType.value === 'expense'){
+        expenseList.push(newBudget)
+        totalExpense += Number(budgetNumber.value)
+        
+        
+    }
+    displayStatic()
+
 })
 
+document.body.addEventListener('click', event =>{
+    if (!event.target.matches('.delete-button')) return
+    const key = event.target.dataset.key
+    const value = Number(event.target.dataset.value)
+    if (event.target.closest('#income-detail')){
+        totalIncome = totalIncome - value        
+        incomeList = incomeList.filter(item => item.key != key)
+    }else{
+        totalExpense = totalExpense - value 
+        expenseList = expenseList.filter(item => item.key != key)
+    }
+    displayStatic()
+})
 
 
