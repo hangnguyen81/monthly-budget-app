@@ -7,14 +7,8 @@
 body{
     font-size: 1.25rem;
     font-family: 'Rajdhani', sans-serif;
-    /* max-width: 1200px;
-    width: 80%; */
+
 }
-/* 
-    Typography
-*/
-
-
 
 /*---------------------------------------- 
 General information section
@@ -77,6 +71,7 @@ General information section
 .expense{
     background-color: rgba(255, 68, 0, 0.719);
 }
+
 /* ----------------------------------------------
 Budget update Section (data input
 ------------------------------------------------*/
@@ -117,6 +112,7 @@ button{
     letter-spacing: 1px;
     padding: .2em .6em;
 }
+
 /* --------------------------------
 budget-detail
 ----------------------------------*/
