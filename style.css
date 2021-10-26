@@ -41,7 +41,7 @@ General information section
     padding: .5em;
     margin: 0 auto .5em auto;
     display: grid;
-    grid-template-columns: repeat(4,1fr) 30px;
+    grid-template-columns: repeat(4,1fr) 40px;
     column-gap: 5px;
     text-align: left;
 }
@@ -53,6 +53,7 @@ General information section
 #budget-total-income-number,
 #budget-total-expense-number{
     grid-column: 4;
+    width: fit-content;
     text-align: right;
 }
 
